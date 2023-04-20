@@ -20,8 +20,7 @@ def checkParkingSpace(imgPro):
  
         imgCrop = imgPro[y:y + height, x:x + width]
         # cv2.imshow(str(x * y), imgCrop)
-        count = cv2.countNonZero(imgCrop)
- 
+        count = cv2.countNonZero(imgCrop) #for counting the number of non-zero/colorful pixels in the image.
  
         if count < 900:
             color = (0, 255, 0)
@@ -51,6 +50,7 @@ while True:
     imgMedian = cv2.medianBlur(imgThreshold, 5)
     kernel = np.ones((3, 3), np.uint8)
     imgDilate = cv2.dilate(imgMedian, kernel, iterations=1)
+ 
  
     checkParkingSpace(imgDilate)
     cv2.imshow("Image", img)
